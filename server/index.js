@@ -15,6 +15,17 @@ app.use(cors());
 app.use("/api/user", userRoute);
 app.use("/api/auth", authRoute);
 
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  const message = err.message || "Internal server error.";
+
+  return res.status(statusCode).json({
+    success: false,
+    message,
+    statusCode,
+  });
+});
+
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
@@ -25,5 +36,5 @@ mongoose
   });
 
 app.listen(5000, () => {
-  console.log("Server Port: 3000");
+  console.log("Server Port: 5000");
 });
