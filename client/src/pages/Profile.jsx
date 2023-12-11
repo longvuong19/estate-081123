@@ -263,7 +263,7 @@ const Profile = () => {
               key={listing._id}
               className="border rounded-lg p-3 flex justify-between items-center gap-4"
             >
-              <Link to={`/listings/${listing._id}`}>
+              <Link to={`/listing/${listing._id}`}>
                 <img
                   src={listing.imageUrls[0]}
                   alt="listing cover"
@@ -271,7 +271,7 @@ const Profile = () => {
                 />
               </Link>
               <Link
-                to={`/listings/${listing._id}`}
+                to={`/listing/${listing._id}`}
                 className="flex-1 text-slate-700 font-semibold hover:underline cursor-pointer truncate"
               >
                 <p>{listing.name}</p>
@@ -284,7 +284,9 @@ const Profile = () => {
                 >
                   Delete
                 </button>
-                <button className="text-green-700 uppercase">Edit</button>
+                <Link to={`/update-listing/${listing._id}`}>
+                  <button className="text-green-700 uppercase">Edit</button>
+                </Link>
               </div>
             </div>
           ))}
